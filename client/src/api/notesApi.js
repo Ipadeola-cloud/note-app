@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://note-app-api-j6m9.onrender.com";
 
 // Get all notes
 export const getNotes = () => axios.get(`${API_URL}/notes`);
