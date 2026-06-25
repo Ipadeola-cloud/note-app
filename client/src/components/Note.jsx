@@ -1,26 +1,28 @@
 import React, { useState } from "react";
-import { useRef } from "react";
-
 
 function Note(props) {
   const [isEditing, setIsEditing] = useState(false);
-  const textareaRef = useRef(null);
+ 
 
   const [editedNote, setEditedNote] = useState({
-    title: props.title,
-    content: props.content,
+    title: "",
+    content: "",
   });
 
   function handleDelete() {
     // props.onDelete(props.id);
     const confirmDelete = window.confirm( 
-      "Are you sure you want to delete this note?");
+      "Are you sure you want to  delete this note?");
       if (confirmDelete){
         props.onDelete(props.id);
       }
   }
 
   function handleEditToggle() {
+    setEditedNote({
+      title: props.title,
+      content: props.content,
+    });
     setIsEditing(true);
   }
 
@@ -47,13 +49,9 @@ function Note(props) {
             value={editedNote.title}
             onChange={handleChange}
           />
-          {/*   <textarea
-            name="content"
-            value={editedNote.content}
-            onChange={handleChange}
-          /> */}
+          
           <textarea
-            ref={textareaRef}
+            
             className="edit-content"
             name="content"
             value={editedNote.content}
